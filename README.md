@@ -1,47 +1,124 @@
 # wd101
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  Registration form
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .table-container {
+            width: 700px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #008000;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #008000;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            display: block;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #008000;
+            color: #fff;
+        }
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+    <script src="index.js"></script>
 </head>
 <body>
-  <h1> wd101 registration form</h1>
-  <form>
-    <label>Name:</label>
-    <input type="text" placeholder="Name" required name="name" style="padding-right: 100px"; />
-    <br/>
-    <label>email:</label>
-    <input type="email" placeholder="email" required name="name" style="padding-right: 100px";/>
-    <br/>
-    <label>Password:</label>
-    <input type="password" placeholder="password" required name="name"style="padding-right: 100px;"/>
-    <br/>
-    <label>Date Of Birth:</label>
-    <input type="date" placeholder="DOB" required name="name" style="padding-right: 100px;"/>
-    <br/>
-    <input type="checkbox" placeholder="checkbox" required />
-    <label>Accept Terms and conditions:</label>
-    <br/>
-    <input type="submit" value="Submit" > 
-  </form>
-  <table>
-    <thead>
-      <th>
-        Name
-      </th>
-      <th>
-        Email
-      </th>
-      <th>
-        Password
-      </th>
-      <th>
-        Date of Birth
-      </th>
-      <th>
-        Accepted Terms
-      </th>
-    </thead> 
-  </table>
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <label for="name">Name<font color=red>*</font></label>
+            <input type="text" id="name" name="name" placeholder="Enter full name" required>
+
+            <label for="email">Email<font color=red>*</font></label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+            <label for="password">Password<font color=red>*</font></label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+            <label for="dob">Date of Birth<font color=red>*</font></label>
+            <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" onchange="restrict()" required class="form-control date-input">
+
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I accept the terms and conditions.</label>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="table-container" id="output">
+        <h2>Entries</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Dob</th>
+                    <th>Accepted terms?</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
+        </table>
+    </div>
 </body>
-</html>
